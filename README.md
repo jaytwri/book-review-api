@@ -13,6 +13,7 @@ Setup Instructions
 1. Clone the project
 
 2. Install Dependencies
+
 npm install
 
 3. Create a .env File like the one below:
