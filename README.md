@@ -144,8 +144,6 @@ Database Schema Overview
 
 User
 
-Field	Type
-
 name	String
 
 email	String
@@ -155,30 +153,26 @@ password	String (hashed)
 
 Book
 
-Field	Type
+title	       String
 
-title	String
+author	       String
 
-author	String
+genre	        String
 
-genre	String
+averageRating	 Number
 
-averageRating	Number
-
-reviews	[ObjectId] – Ref to Review
+reviews	      [ObjectId] – Ref to Review
 
 
 Review
 
-Field	Type
+comment	 String
 
-comment	String
+rating	  Number (1–5)
 
-rating	Number (1–5)
+book	    ObjectId (ref: Book)
 
-book	ObjectId (ref: Book)
-
-user	ObjectId (ref: User)
+user	    ObjectId (ref: User)
 
 
 -------------------------------------------------------------------
