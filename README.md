@@ -26,6 +26,7 @@ PORT=5001
 MONGO_URI=your_mongodb_atlas_uri
 JWT_SECRET=your_jwt_secret_here
 ```
+my mongo uri looked somewhat like: MONGO_URI=mongodb+srv://jay:TOKEN_PASSWORD.kazzlgw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 
 > Do **NOT** commit this file to GitHub. It's excluded via `.gitignore`.
 
