@@ -23,6 +23,7 @@ It's excluded via .gitignore.
 The JWT secret can be what I have pasted abvoe as well.
 
 4. Run the App
+
 node server.js
 
 Your API will be available at:
