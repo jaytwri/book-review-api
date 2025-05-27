@@ -59,6 +59,9 @@ Body:
   "password": "pass"
 }
 
+
+
+
 POST /login – Log in as an existing user
 
 URL: http://localhost:5001/api/users/login
@@ -70,6 +73,9 @@ Body:
   "password": "pass"
 }
 Response: Returns a JWT token. Use this token for authenticated routes by setting it as a Bearer Token in Postman.
+
+
+
 
 POST /books – Add a new book
 
@@ -85,14 +91,22 @@ Body:
   "genre": "notorious book"
 }
 
+
+
+
 GET /books/:id – Get book by ID
 
 URL: http://localhost:5001/api/books/6835737fe39392ab214aeb71
 
 
+
+
 GET /books – Get all books
 
 URL: http://localhost:5001/api/books/
+
+
+
 
 Reviews (Authenticated)
 
@@ -107,15 +121,22 @@ Body:
   "rating": 5
 }
 
+
+
 PUT /reviews/:id – Update a review
 
-URL: http://localhost:5001/api/reviews/68357419e39392ab214aeb76
+URL: http://localhost:5001/api/reviews/REVIEW_ID_HERE
 
 Get the review ID from the book details API response.
+
+
+
 
 DELETE /reviews/:id – Delete a review
 
 URL: http://localhost:5001/api/reviews/68357419e39392ab214aeb76
+
+
 
 Search Functionality
 
@@ -124,6 +145,9 @@ GET /books/search?q=NAME_OF_BOOK – Search by book title
 Example: http://localhost:5001/api/books/search?q=black
 
 Supports partial and case-insensitive matching.
+
+
+
 
 GET /books/search?q=NAME_OF_AUTHOR – Search by author name
 
