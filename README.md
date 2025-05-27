@@ -41,7 +41,9 @@ Use this token to access protected routes by choosing the **** Bearer Token*****
 API Endpoints & Usage Guide
 
 POST /signup – Register a new user
+
 URL: http://localhost:5001/api/users/signup
+
 Body:
 {
   "name": "Sanjay",
@@ -50,7 +52,9 @@ Body:
 }
 
 POST /login – Log in as an existing user
+
 URL: http://localhost:5001/api/users/login
+
 Body:
 {
   "email": "sanjay@email.com",
@@ -59,8 +63,11 @@ Body:
 Response: Returns a JWT token. Use this token for authenticated routes by setting it as a Bearer Token in Postman.
 
 POST /books – Add a new book
+
 URL: http://localhost:5001/api/books
+
 Headers: Authorization: Bearer <your_token>
+
 Body:
 {
   "title": "Babablacksheep",
@@ -69,14 +76,20 @@ Body:
 }
 
 GET /books/:id – Get book by ID
+
 URL: http://localhost:5001/api/books/6835737fe39392ab214aeb71
 
+
 GET /books – Get all books
+
 URL: http://localhost:5001/api/books/
 
 Reviews (Authenticated)
+
 POST /books/:id/reviews – Add a review to a book
+
 URL:http://localhost:5001/api/books/6835737fe39392ab214aeb71/reviews
+
 Body:
 {
   "comment": "Fantastic read!",
@@ -84,18 +97,25 @@ Body:
 }
 
 PUT /reviews/:id – Update a review
+
 URL: http://localhost:5001/api/reviews/68357419e39392ab214aeb76
+
 Get the review ID from the book details API response.
 
 DELETE /reviews/:id – Delete a review
+
 URL: http://localhost:5001/api/reviews/68357419e39392ab214aeb76
 
 Search Functionality
+
 GET /books/search?q=NAME_OF_BOOK – Search by book title
+
 Example: http://localhost:5001/api/books/search?q=black
+
 Supports partial and case-insensitive matching.
 
 GET /books/search?q=NAME_OF_AUTHOR – Search by author name
+
 Example:http://localhost:5001/api/books/search?q=vijay
 
 ------------------------------------------------------------------
