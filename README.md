@@ -20,8 +20,11 @@ npm install
 3. Create a .env File like the one below:
 -------------------------------------------------------------
 PORT=5001
+
 MONGO_URI=your_mongodb_atlas_uri
+
 JWT_SECRET=your_jwt_secret_here
+
 -------------------------------------------------------------
 Do NOT commit this file to GitHub.
 It's excluded via .gitignore.
