@@ -1,209 +1,182 @@
-Author - Jay Tiwari
+# Book Review API
 
-Email - jaytiwari99@gmail.com
+## Author
+**Name:** Jay Tiwari  
+**Email:** jaytiwari99@gmail.com  
+**Phone:** +91-7796696693  
 
-Phone - +91-7796696693
+---
 
+## Setup Instructions
 
-Book Review API
+### 1. Clone the Project
+```bash
+git clone https://github.com/your-username/book-review-api.git
+cd book-review-api
+```
 
-Setup Instructions
-
-
-1. Clone the project
-
-2. Install Dependencies
-
+### 2. Install Dependencies
+```bash
 npm install
+```
 
-3. Create a .env File like the one below:
--------------------------------------------------------------
+### 3. Create a `.env` File
+Create a `.env` file in the root directory with the following content:
+
+```
 PORT=5001
-
 MONGO_URI=your_mongodb_atlas_uri
-
 JWT_SECRET=your_jwt_secret_here
+```
 
--------------------------------------------------------------
-Do NOT commit this file to GitHub.
-It's excluded via .gitignore.
-The JWT secret can be what I have pasted abvoe as well.
+> Do **NOT** commit this file to GitHub. It's excluded via `.gitignore`.
 
-4. Run the App
-
+### 4. Run the App
+```bash
 node server.js
+```
 
-Your API will be available at:
-http://localhost:5001
+The API will be available at:  
+`http://localhost:5001`
 
-------JWT USAGE------
-The JWT_SECRET is used internally by the server to sign/verify tokens.
+---
 
-When logging in (/api/users/login), you receive a JWT token.
+## JWT Usage
 
-Use this token to access protected routes by choosing the **** Bearer Token******
- option in Postman.
- 
---------------------------------------------------------------------------------
-API Endpoints & Usage Guide
+The `JWT_SECRET` is used internally by the server to sign and verify tokens.
 
-POST /signup – Register a new user
+When logging in at `/api/users/login`, you receive a JWT token.  
+Use this token to access protected routes by choosing the **Bearer Token** option in Postman.
 
-URL: http://localhost:5001/api/users/signup
+---
 
-Body:
+## API Endpoints & Usage Guide
 
+### User Authentication
+
+#### POST `/api/users/signup` – Register a new user
+**Request Body:**
+```json
 {
   "name": "Sanjay",
   "email": "sanjay@email.com",
   "password": "pass"
 }
+```
 
-
-
-
-POST /login – Log in as an existing user
-
-URL: http://localhost:5001/api/users/login
-
-Body:
-
+#### POST `/api/users/login` – Log in
+**Request Body:**
+```json
 {
   "email": "sanjay@email.com",
   "password": "pass"
 }
-Response: Returns a JWT token. Use this token for authenticated routes by setting it as a Bearer Token in Postman.
+```
 
+**Response:**  
+Returns a JWT token to be used in the Bearer Token Authorization header.
 
+---
 
+### Books
 
-POST /books – Add a new book
+#### POST `/api/books` – Add a new book (Authenticated)
+**Headers:**  
+`Authorization: Bearer <your_token>`
 
-URL: http://localhost:5001/api/books
-
-Headers: Authorization: Bearer <your_token>
-
-Body:
-
+**Request Body:**
+```json
 {
   "title": "Babablacksheep",
   "author": "vijaytiwari",
   "genre": "notorious book"
 }
+```
 
+#### GET `/api/books/:id` – Get book by ID  
+Example:  
+`http://localhost:5001/api/books/6835737fe39392ab214aeb71`
 
+#### GET `/api/books` – Get all books  
+Example:  
+`http://localhost:5001/api/books/`
 
+---
 
-GET /books/:id – Get book by ID
+### Reviews (Authenticated)
 
-URL: http://localhost:5001/api/books/6835737fe39392ab214aeb71
+#### POST `/api/books/:id/reviews` – Add a review
+**URL:**  
+`http://localhost:5001/api/books/6835737fe39392ab214aeb71/reviews`
 
-
-
-
-GET /books – Get all books
-
-URL: http://localhost:5001/api/books/
-
-
-
-
-Reviews (Authenticated)
-
-POST /books/:id/reviews – Add a review to a book
-
-URL:http://localhost:5001/api/books/6835737fe39392ab214aeb71/reviews
-
-Body:
-
+**Request Body:**
+```json
 {
   "comment": "Fantastic read!",
   "rating": 5
 }
+```
 
+#### PUT `/api/reviews/:id` – Update a review  
+Example:  
+`http://localhost:5001/api/reviews/REVIEW_ID_HERE`  
+> Get the review ID from the book details response.
 
+#### DELETE `/api/reviews/:id` – Delete a review  
+Example:  
+`http://localhost:5001/api/reviews/68357419e39392ab214aeb76`
 
-PUT /reviews/:id – Update a review
+---
 
-URL: http://localhost:5001/api/reviews/REVIEW_ID_HERE
+### Search Functionality
 
-Get the review ID from the book details API response.
+#### GET `/api/books/search?q=NAME_OF_BOOK` – Search by title  
+Example:  
+`http://localhost:5001/api/books/search?q=black`
 
+#### GET `/api/books/search?q=NAME_OF_AUTHOR` – Search by author  
+Example:  
+`http://localhost:5001/api/books/search?q=vijay`
 
+> Supports partial and case-insensitive matching.
 
+---
 
-DELETE /reviews/:id – Delete a review
+## Postman Usage Tips
 
-URL: http://localhost:5001/api/reviews/68357419e39392ab214aeb76
+1. Use `/api/users/login` to get a JWT token.
+2. In Postman, for protected routes:
+   - Go to the **Authorization** tab.
+   - Select **Bearer Token**.
+   - Paste your token.
 
+---
 
+## Database Schema Overview
 
-Search Functionality
+### User
+- `name` – String  
+- `email` – String  
+- `password` – String (hashed)  
 
-GET /books/search?q=NAME_OF_BOOK – Search by book title
+### Book
+- `title` – String  
+- `author` – String  
+- `genre` – String  
+- `averageRating` – Number  
+- `reviews` – [ObjectId] (ref: Review)  
 
-Example: http://localhost:5001/api/books/search?q=black
+### Review
+- `comment` – String  
+- `rating` – Number (1–5)  
+- `book` – ObjectId (ref: Book)  
+- `user` – ObjectId (ref: User)  
 
-Supports partial and case-insensitive matching.
+---
 
+## Design Decisions
 
-
-
-GET /books/search?q=NAME_OF_AUTHOR – Search by author name
-
-Example:
-http://localhost:5001/api/books/search?q=vijay
-
-------------------------------------------------------------------
-Postman Usage Tips
-
-For protected routes, use the Bearer Token method in Postman:
-
-Login to receive your JWT token.
-In any protected request, go to the Authorization tab.
-Select Bearer Token and paste your token.
-
--------------------------------------------------------------------
-Database Schema Overview
-
-
-User
-
-name	String
-
-email	String
-
-password	String (hashed)
-
-
-Book
-
-title	       String
-
-author	       String
-
-genre	        String
-
-averageRating	 Number
-
-reviews	      [ObjectId] – Ref to Review
-
-
-Review
-
-comment	 String
-
-rating	  Number (1–5)
-
-book	    ObjectId (ref: Book)
-
-user	    ObjectId (ref: User)
-
-
--------------------------------------------------------------------
-
-==========>Design Decisions<===============
-One review per user per book is enforced at controller level.
-Book average rating is recalculated after every review create/update/delete.
-MongoDB Atlas used for easy deployment and testing.
-Mongoose is also used for data modeling since I chose to MongoDB.
+- One review per user per book is enforced at the controller level.
+- Book average rating is recalculated after every review create/update/delete.
+- MongoDB Atlas is used for easy deployment and testing.
+- Mongoose is used for data modeling.
