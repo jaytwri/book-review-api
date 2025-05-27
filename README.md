@@ -10,12 +10,11 @@
 ## Setup Instructions
 
 ### 1. Clone the Project
-```bash
-cd book-review-api
-```
+
 
 ### 2. Install Dependencies
 ```bash
+cd book-review-api
 npm install
 ```
 
