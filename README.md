@@ -11,7 +11,6 @@
 
 ### 1. Clone the Project
 ```bash
-git clone https://github.com/your-username/book-review-api.git
 cd book-review-api
 ```
 
