@@ -1,9 +1,15 @@
 Author - Jay Tiwari
+
 Email - jaytiwari99@gmail.com
+
 Phone - +91-7796696693
 
-**********Book Review API************
---------------------------------------Setup Instructions---------------------
+
+Book Review API
+
+Setup Instructions
+
+
 1. Clone the project
 
 2. Install Dependencies
@@ -45,6 +51,7 @@ POST /signup – Register a new user
 URL: http://localhost:5001/api/users/signup
 
 Body:
+
 {
   "name": "Sanjay",
   "email": "sanjay@email.com",
@@ -56,6 +63,7 @@ POST /login – Log in as an existing user
 URL: http://localhost:5001/api/users/login
 
 Body:
+
 {
   "email": "sanjay@email.com",
   "password": "pass"
@@ -69,6 +77,7 @@ URL: http://localhost:5001/api/books
 Headers: Authorization: Bearer <your_token>
 
 Body:
+
 {
   "title": "Babablacksheep",
   "author": "vijaytiwari",
@@ -91,6 +100,7 @@ POST /books/:id/reviews – Add a review to a book
 URL:http://localhost:5001/api/books/6835737fe39392ab214aeb71/reviews
 
 Body:
+
 {
   "comment": "Fantastic read!",
   "rating": 5
@@ -116,7 +126,8 @@ Supports partial and case-insensitive matching.
 
 GET /books/search?q=NAME_OF_AUTHOR – Search by author name
 
-Example:http://localhost:5001/api/books/search?q=vijay
+Example:
+http://localhost:5001/api/books/search?q=vijay
 
 ------------------------------------------------------------------
 Postman Usage Tips
