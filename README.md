@@ -130,26 +130,45 @@ Select Bearer Token and paste your token.
 -------------------------------------------------------------------
 Database Schema Overview
 
+
 User
+
 Field	Type
+
 name	String
+
 email	String
+
 password	String (hashed)
 
+
 Book
+
 Field	Type
+
 title	String
+
 author	String
+
 genre	String
+
 averageRating	Number
+
 reviews	[ObjectId] – Ref to Review
 
+
 Review
+
 Field	Type
+
 comment	String
+
 rating	Number (1–5)
+
 book	ObjectId (ref: Book)
+
 user	ObjectId (ref: User)
+
 
 -------------------------------------------------------------------
 
