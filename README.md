@@ -6,16 +6,8 @@ Phone - +91-7796696693
 --------------------------------------Setup Instructions---------------------
 1. Clone the project
 
-
-
-
 2. Install Dependencies
 npm install
-
-
-
-
-
 
 3. Create a .env File like the one below:
 -------------------------------------------------------------
@@ -30,22 +22,11 @@ Do NOT commit this file to GitHub.
 It's excluded via .gitignore.
 The JWT secret can be what I have pasted abvoe as well.
 
-
-
-
 4. Run the App
 node server.js
 
-
-
-
 Your API will be available at:
 http://localhost:5001
-
-
-
-
-
 
 ------JWT USAGE------
 The JWT_SECRET is used internally by the server to sign/verify tokens.
@@ -54,15 +35,8 @@ When logging in (/api/users/login), you receive a JWT token.
 
 Use this token to access protected routes by choosing the **** Bearer Token******
  option in Postman.
---------------------
-
-
-
-
-
-
-
---------------------------------------------------------------------
+ 
+--------------------------------------------------------------------------------
 API Endpoints & Usage Guide
 
 POST /signup – Register a new user
@@ -123,12 +97,6 @@ Supports partial and case-insensitive matching.
 GET /books/search?q=NAME_OF_AUTHOR – Search by author name
 Example:http://localhost:5001/api/books/search?q=vijay
 
-
-
-
-
-
-
 ------------------------------------------------------------------
 Postman Usage Tips
 
@@ -161,14 +129,8 @@ comment	String
 rating	Number (1–5)
 book	ObjectId (ref: Book)
 user	ObjectId (ref: User)
+
 -------------------------------------------------------------------
-
-
-
-
-
-
-
 
 ==========>Design Decisions<===============
 One review per user per book is enforced at controller level.
